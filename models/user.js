@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 
 class User extends Model{
    static async login(password,hashedpass){
-        return bcrypt.compare(password, hashedpass)
+        return bcrypt.compare(password,hashedpass)
     }
 }
 
@@ -18,7 +18,7 @@ User.init(
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull:true,
             autoIncrement:true,
             primaryKey:true
         },

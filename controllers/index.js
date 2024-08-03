@@ -1,11 +1,13 @@
 const router = require('express').Router()
 const express = require('express')
+const path = require('path')
 const apiRoutes = require('./api');
 const Post = require('../models/posts');
 const User = require('../models');
 
 router.use('/api', apiRoutes);
 router.use(express.json())
+router.use(express.static(path.join(__dirname,'../public')))
 
 
 // home route
@@ -20,15 +22,23 @@ router.get('/', async (req,res) => {
 })
 
 //signin route
-router.get('/signup', async(req,res) => {res.render('signup')})
+router.get('/signup', async(req,res) => {
+  res.render('signup')
+})
 
+router.get('/login', async(req,res) => {
+  res.render('login')
+})
 
 //selected post route
 router.get('/posts/:id', async (req,res) => {
   try{
-  const postData = await Post.findByPk(req.params.id, {
+  let postData = await Post.findByPk(req.params.id, {
     include: [{model:User}]
   })
+  postData.get({plain:true})
+  console.log(postData)
+
   res.render('posts', postData.dataValues)
   }
   catch(err) {

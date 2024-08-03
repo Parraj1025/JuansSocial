@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<nav>
+    <button id="homeBtn">
+        Home
+    </button>
+</nav>
+<body >
     <form>
         <input class="username" id="username" placeholder="enter username">
         <input class="email" id="email" placeholder="enter valid email">
         <input class="password" id="password" placeholder="enter password">
-            <button>sign up</button>
+            <button id="signUpBtn">sign up</button>
     </form>
+    {{>error-description}}
 </body>
-</html>
+<script src="/js/signup.js"></script>
