@@ -5,17 +5,23 @@ const apiRoutes = require('./api');
 const Post = require('../models/posts');
 const User = require('../models');
 
+
 router.use('/api', apiRoutes);
 router.use(express.json())
 router.use(express.static(path.join(__dirname,'../public')))
 
 
+
 // home route
 router.get('/', async (req,res) => {
   try {
+    if(req.session.loggedIn == true){
     const allPost = await Post.findAll({include:[{model:User}]})
-  res.render('all',{ allPost })
+  res.render('all',{ allPost, countvisit: req.session.count, username: req.session.username })
   }
+  else{
+    res.render('all')
+  }}
   catch(err){
     console.log(err)
   }

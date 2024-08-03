@@ -1,7 +1,7 @@
-const signUpBtn = document.getElementById('signUpBtn')
+const signUpReq = document.getElementById('signUpReq')
 const homeBtn = document.getElementById('homeBtn')
 
-async function displaydata(){
+async function signUp(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const  email = document.getElementById('email').value;
@@ -20,18 +20,20 @@ async function displaydata(){
         document.location.replace('/')
     }
     else{
-        document.location.reload()
-        
+        const data = await response.json()
+       return data
     }
 
     console.log(response)
 }
 
 
-signUpBtn.addEventListener('click',(event) =>{
-    displaydata()
+signUpReq.addEventListener('click',(event) =>{
+    event.preventDefault()
+    signUp()
 })
 
 homeBtn.addEventListener('click', (event)=> {
+    event.preventDefault()
     document.location.replace('/')
 })

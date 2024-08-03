@@ -33,6 +33,15 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.post('/logout', async (req,res) => {
+    if(req.session.loggedIn){
+        console.log('youre loggedi')
+    }
+    else{
+        console.log('youre not logged in')
+    }
+})
+
 router.post('/login', async (req, res) => {
     try {
 
@@ -46,12 +55,18 @@ router.post('/login', async (req, res) => {
 
         // authenticate
         const thisYou = await User.login(password, user.password);
-        if (thisYou){
-            res.status(200).json(`welcome back ${username}`)
+        if (!thisYou) {
+           res.status(404).json('wrong password')
         }
-        else{res.status(404).json('wrong password') }
+        
+        await req.session.save();
+        req.session.loggedIn = true;
+        req.session.username = username;
+        req.session.cookie;
 
-
+        res
+        .status(200)
+        .json(req.session)
     }
 
 

@@ -13,10 +13,11 @@ async function login(){
             'Content-Type': 'application/json'
         }
     })
-    if(response.ok){ document.location.replace('/')}
+    if(response.ok){ 
+        document.location.replace('/')}
+    
     else{
-        const data = await response.json()
-        console.log(data)
+        alert('cant log in')
     }
 }
 
