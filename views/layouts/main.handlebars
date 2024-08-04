@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,27 @@
 </head>
 <header class="header">
     <div>Welcome To JUANDOTCOM</div>
+    <div>{{#if loggedIn}}
+        {{>profileHeader}}
+        {{/if}}
+    </div>
 </header>
 <nav>
-<button  id="signUpBtn" >signup</button>
-<button id="logInBtn">login</button>
+    {{#if showLogIn}}
+    {{>loginbutton}}
+    {{/if}}
+        {{#if dashboard}}
+        {{>dashboardBtn}}
+        {{/if}}
+        {{#if showSignUp}}
+    {{>signUpBtn}}
+    {{/if}}
+    {{homeBtn}}
 </nav>
+
 <body class="body">
     {{{ body }}}
-    
+
 </body>
-<script src="/js/main.js"></script>
+
 </html>

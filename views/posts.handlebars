@@ -1,8 +1,10 @@
-<div class="post-card">
-    <div class="post-card-header">
-           username: {{{this.user.dataValues.username}}}
+<body id="postBody">
+    <div>
+        Some of your recent posts
     </div>
-    <div class="post">
-         {{{this.body}}}
+    {{#each postData}}
+    <div>
+        {{this.dataValues.body}}
     </div>
-</div>
+    {{/each}}
+</body>

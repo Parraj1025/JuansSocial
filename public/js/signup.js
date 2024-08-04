@@ -1,39 +1,46 @@
 const signUpReq = document.getElementById('signUpReq')
 const homeBtn = document.getElementById('homeBtn')
+const logIn = document.getElementById('logInBtn')
 
-async function signUp(){
+async function signUp() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const  email = document.getElementById('email').value;
-    const response = await fetch('/api/users',{
-        method: 'POST',
-        body: JSON.stringify({
-           username: username,
-            email: email,
-            password: password
-        }),
-        headers: {
-            'Content-Type': 'application/json'
+    const email = document.getElementById('email').value;
+
+    if (username && password && email) {
+        const response = await fetch('/api/users/signup', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (response.ok) {
+            console.log(response)
+            document.location.replace('/')
         }
-    })
-    if(response.ok){
-        document.location.replace('/')
+        else {
+            document.location.reload('/signup')
+            const data = await response.json()
+            return data
+        }
     }
     else{
-        const data = await response.json()
-       return data
+        alert('fill out all fields')
     }
-
-    console.log(response)
 }
 
 
-signUpReq.addEventListener('click',(event) =>{
+signUpReq.addEventListener('click', (event) => {
     event.preventDefault()
     signUp()
 })
 
-homeBtn.addEventListener('click', (event)=> {
-    event.preventDefault()
-    document.location.replace('/')
+
+logIn.addEventListener('click', (event) => {
+    document.location.replace('/login')
 })

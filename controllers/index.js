@@ -17,35 +17,44 @@ router.get('/', async (req,res) => {
   try {
     if(req.session.loggedIn == true){
     const allPost = await Post.findAll({include:[{model:User}]})
-  res.render('all',{ allPost, countvisit: req.session.count, username: req.session.username })
+  res.render('all',{ allPost, countvisit: req.session.count, username: `youre logged in as ${req.session.username}`, loggedIn:req.session.loggedIn, showLogOut: true, showLogIn: false, showSignUp: false, dashboard: true})
   }
   else{
-    res.render('all')
+    res.render('all', {username: 'Please sign in', showLogIn: true, showSignUp: true}, )
   }}
   catch(err){
     console.log(err)
   }
 })
 
+
 //signin route
 router.get('/signup', async(req,res) => {
-  res.render('signup')
+  if (req.session.loggedIn == false ){
+  res.render('signup', {showLogIn: true, signuperror: true})
+  }
+  else{
+    res.render('signup', {showLogIn: true})
+  }
 })
 
 router.get('/login', async(req,res) => {
   res.render('login')
 })
 
-//selected post route
-router.get('/posts/:id', async (req,res) => {
-  try{
-  let postData = await Post.findByPk(req.params.id, {
-    include: [{model:User}]
-  })
-  postData.get({plain:true})
-  console.log(postData)
 
-  res.render('posts', postData.dataValues)
+
+//selected post route
+router.get('/dashboard', async (req,res) => {
+  try{
+  let postData = await Post.findAll({where:{user_id: req.session.userId}})
+  const readyData = await postData
+  const username = req.session.username
+  const loggedIn = req.session.loggedIn
+  
+  console.log(username)
+
+  res.render('posts', {postData,username,loggedIn})
   }
   catch(err) {
     console.log(err)

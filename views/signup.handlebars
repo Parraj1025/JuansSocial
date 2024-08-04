@@ -1,15 +1,17 @@
-<nav>
-    <button id="homeBtn">
-        Home
-    </button>
-</nav>
+
 <body >
     <form>
         <input class="username" id="username" placeholder="enter username">
         <input class="email" id="email" placeholder="enter valid email">
         <input class="password" id="password" placeholder="enter password">
-            <button id="signUpReq">sign up</button>
+            <button id="signUpReq">submit</button>
     </form>
-    {{>error-description}}
+    <div>
+      {{#if signuperror}}
+    {{>signUpError}}
+    {{/if}}
+    </div>
 </body>
 <script src="/js/signup.js"></script>
+<script src="/js/main.js"></script>
+<script src="js/logout.js"></script>

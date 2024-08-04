@@ -12,12 +12,16 @@ router.get('/', async (req,res) => {
 })
 
 router.post('/', async (req,res) => {
-    const user_id = await Post.create({
-
+    const user_id = req.body.user_id
+    const body = req.body.body
+    let postdata = await Post.create({
+        user_id:user_id,
+        body: body
     })
-
+   postdata = await postdata.get()
+   console.log(postdata)
+})
 
    
-})
 
 module.exports = router
