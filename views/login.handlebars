@@ -1,8 +1,11 @@
-<div>
-    <form>
+<div id="signInBox">
+ <form id="signInForm">
+    <h4>Welcome back, please sign in!!</h4>
         <input id="username" placeholder="enter username">
         <input id="password" placeholder="enter password">
+        <div>
         <button id="loginBtn">Log In</button>
+        {{>signUpBtn}}
+        </div>
     </form>
 </div>
-<script src="/js/login.js"></script>

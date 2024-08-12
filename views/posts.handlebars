@@ -1,9 +1,12 @@
-<body id="postBody">
+<body id="allPostBody">
     <div>
         Some of your recent posts
     </div>
-    {{#each postData}}
     <div>
+      
+    </div>
+    {{#each postData}}
+    <div id="postCard">
         {{this.dataValues.body}}
     </div>
     {{/each}}

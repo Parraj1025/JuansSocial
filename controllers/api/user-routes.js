@@ -29,18 +29,19 @@ router.post('/signup', async (req, res) => {
 
         if (check) {
 
-            const UserId = await User.findOne({where: {username : req.body.username}})
-            
+            const data = await User.findOne({where: {username : req.body.username}})
+            const userId = await data.dataValues.id
 
             await req.session.save()
             req.session.username = req.body.username,
                 req.session.loggedIn = true,
                 req.session.showLogOut = true,
                 req.session.showLogIn = false,
+                req.session.userId = userId
                 req.session.cookie
 
             res.json(req.session)
-            res.render('all')
+            res.render('all',{showLogIn: false})
         }
         else {
             req.session.loggedIn = false

@@ -1,17 +1,24 @@
 
-<body >
-    <form>
+<body>
+  <div id="formBox">
+    <form id="signUpForm">
+      <div class="signUpIns">
+        <h4>Lets get you set up, please fill out all fields
+                - Password must be at least 8 characters</h4>
+       </div>
         <input class="username" id="username" placeholder="enter username">
         <input class="email" id="email" placeholder="enter valid email">
         <input class="password" id="password" placeholder="enter password">
-            <button id="signUpReq">submit</button>
-    </form>
-    <div>
-      {{#if signuperror}}
+          <div>
+            <button id="signUpReq">Sign Me Up</button>
+            {{>loginbutton}}
+            </div>
+               {{#if signuperror}}
     {{>signUpError}}
     {{/if}}
+    </form>
     </div>
 </body>
 <script src="/js/signup.js"></script>
-<script src="/js/main.js"></script>
 <script src="js/logout.js"></script>
+

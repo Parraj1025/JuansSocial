@@ -28,6 +28,6 @@ app.use(express.json)
 
 
 
-Sequelize.sync({force: false}).then(()=>{
+Sequelize.sync({force: true}).then(()=>{
     app.listen(3000)
 })

@@ -1,13 +1,13 @@
+{{#each allPost}}
+<div id="postCard">
 
 <div>
-    {{#each allPost}}
-    <div>
-       username: {{this.dataValues.user.dataValues.username}}
-    </div>
-    <div>
-        thoughts:  {{this.dataValues.body}}
-    </div>
-    {{/each}}
-</div><script src="/js/main.js"></script>
+    username: {{this.dataValues.user.dataValues.username}}
+</div>
+<div>
+    thoughts: {{this.dataValues.body}}
+</div>
+</div>
+{{/each}}
+<script src="/js/main.js"></script>
 <script src="/js/dashboard.js"></script>
-

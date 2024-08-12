@@ -6,6 +6,7 @@ const Post = require('../models/posts');
 const User = require('../models');
 
 
+
 router.use('/api', apiRoutes);
 router.use(express.json())
 router.use(express.static(path.join(__dirname,'../public')))
@@ -34,7 +35,7 @@ router.get('/signup', async(req,res) => {
   res.render('signup', {showLogIn: true, signuperror: true})
   }
   else{
-    res.render('signup', {showLogIn: true})
+    res.render('signup', {showLogIn: false})
   }
 })
 

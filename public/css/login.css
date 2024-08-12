@@ -1,0 +1,27 @@
+
+#signInForm{
+    width: 80%;
+    background-color: wheat;
+    margin:5%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    #signUpBtn{
+        margin-top: 2%;
+        color:black;
+        background-color: wheat;
+        margin-left: 25%;
+    margin-bottom: 2%;}
+    #loginBtn{
+        margin-top: 2%;
+        margin-left: 25%;
+        color: black;
+        background-color: wheat;
+        border: 2px solid black;
+        border-radius: 20px;
+        width: 100px;
+        margin-bottom: 2%;
+      
+    }
+}

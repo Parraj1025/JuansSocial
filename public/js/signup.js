@@ -1,6 +1,7 @@
 const signUpReq = document.getElementById('signUpReq')
 const homeBtn = document.getElementById('homeBtn')
-const logIn = document.getElementById('logInBtn')
+const logIn = document.getElementById('logInReq')
+
 
 async function signUp() {
     const username = document.getElementById('username').value;
@@ -41,6 +42,6 @@ signUpReq.addEventListener('click', (event) => {
 })
 
 
-logIn.addEventListener('click', (event) => {
+logIn.addEventListener('click', (event) => {event.preventDefault()
     document.location.replace('/login')
 })

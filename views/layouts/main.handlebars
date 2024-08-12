@@ -4,27 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <header class="header">
-    <div>Welcome To JUANDOTCOM</div>
-    <div>{{#if loggedIn}}
+    <h1 id="siteText">JUANDOTCOM</h1>
+    {{#if loggedIn}}
         {{>profileHeader}}
         {{/if}}
-    </div>
 </header>
-<nav>
+<nav id="navigation">
+    {{#if loggedIn}}
+    {{>logoutbutton}}
+    {{/if}}
+    {{#if loggedIn}}
+    {{>homeBtn}}
+    {{/if}}
     {{#if showLogIn}}
     {{>loginbutton}}
     {{/if}}
-        {{#if dashboard}}
-        {{>dashboardBtn}}
-        {{/if}}
-        {{#if showSignUp}}
+     {{#if dashboard}}
+    {{>dashboardBtn}}
+    {{/if}}
+    {{#if showSignUp}}
     {{>signUpBtn}}
     {{/if}}
     {{homeBtn}}
 </nav>
+<div>
+    {{#if loggedIn}}    
+    {{>postbox}}
+    {{/if}}
+</div>
 
 <body class="body">
     {{{ body }}}

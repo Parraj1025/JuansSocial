@@ -1,0 +1,183 @@
+
+/* css for log in. sign up*/
+ 
+.header{
+justify-content: left;
+}
+
+
+#siteText{
+    text-align: center;
+    color: #AED6F1;
+    opacity: .7;
+    border: 3px inset 
+    #E91E63;
+    border-radius: 20px;
+    width: 300px;
+}
+
+
+form{
+    width: .8;
+    text-align: center;
+    color: white ;
+    display: flex;
+   
+     height: min-content;
+    width: 400px;
+border: 3px inset white;;
+   flex-direction: column;
+  justify-content: center;
+}
+
+#formBox{
+    justify-content: center;
+    margin-inline: 30%;
+    align-items:center ;
+}
+
+.signUpIns{
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+    background-color: black;
+     margin: 4%;
+}
+
+#username{
+    background-color: white;
+    margin-inline: 5%;
+    margin-top: 2%;
+}
+
+#password{
+    background-color: white;
+    margin-inline: 5%;
+    margin-top: 2%;
+}
+
+#email{
+    background-color: white;
+    margin-inline: 5%;
+    margin-top: 2%;
+}
+
+
+logoutBtn{
+    background-color: wheat;
+}
+
+
+#signInBox{
+    justify-content: center;
+    margin-inline: 30%;
+    align-items:center ;
+}
+
+#signInForm{
+  
+    margin:5%;
+    border: 2px solid white;
+    display: flexbox;
+    justify-content: center;
+    flex-direction: column;
+    
+    #loginBtn{
+        color: white;
+        background-color: black;
+         opacity: 60%;
+         border: 2px dashed white;
+         border-radius: 20px;
+         width: 100px;
+         margin-top: 3%;
+         margin-bottom: 3%;
+    }
+    #loginBtn:hover{
+        border-color: yellowgreen;
+    }
+}
+
+
+
+
+.body{
+    margin-top: 2% ;
+    display: flexbox;
+    background-size: cover;
+    background-image: url('../assets/pexels-rafael-guajardo-194140-604671.jpg');
+}
+
+#logInReq{
+    
+    color: white;
+   background-color: black;
+    opacity: 60%;
+    border: 2px dashed white;
+    border-radius: 20px;
+    width: 100px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#logInReq:hover{
+    border-color: yellowgreen;
+}
+
+#signUpReq{
+    margin-inline: 2%;
+    color: white;
+    opacity: 60%;
+    background-color: black;
+    border: 2px dashed white;
+    border-radius: 20px;
+    width: 100px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+#signUpReq:hover{
+    border-color: yellowgreen;
+}
+
+
+#signUpBtn{
+    background-color: black;
+    border: 2px dashed white;
+    color: white;
+    opacity: 60%;
+    border-radius: 20px;
+   width: 100px
+}
+
+#signUpBtn:hover{
+    border-color: greenyellow;
+}
+
+/* css for landing page */
+
+
+#profileInfo{
+    text-align: center;
+    background-color: azure;
+    color: black;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px;
+    margin-left: 3%;
+    margin-bottom: 1%
+}
+
+
+
+
+#postBody{
+    background-color: lightblue;
+    color: black;
+}
+
+
+#postCard{
+    color: white;
+    border: 2px solid white;
+    text-align: center;
+}

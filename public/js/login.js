@@ -1,4 +1,5 @@
 const loginBtn = document.getElementById('loginBtn')
+const signUpBtn = document.getElementById('signUpBtn');
 
 async function login(){
     const username = document.getElementById('username');
@@ -20,8 +21,11 @@ async function login(){
         alert('cant log in')
     }
 }
-
+signUpBtn.addEventListener('click', (event) => {
+    event.preventDefault()
+    document.location.replace('/signup')});
 loginBtn.addEventListener('click',(event)=>{
     event.preventDefault()
     login()
 })
+
