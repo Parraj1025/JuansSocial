@@ -7,6 +7,8 @@ function SignInModal() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);   
+
+    
         
     return(
         <Container style={{textAlign:'center'}}>
