@@ -5,7 +5,6 @@ require('dotenv').config()
 const connectDb = async() => {
     try{
       
-
         const database = process.env.MONGOURI;
 
         const connection = await mongoose.connect(database);
