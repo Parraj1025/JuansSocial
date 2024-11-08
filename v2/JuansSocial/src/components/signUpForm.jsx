@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import register from '../utils/handleRegister';
 
-function SignUpForm({onCloseModal}) {
+function SignUpForm({onCloseModal, successful}) {
     const [validated, setValidated] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -32,32 +32,37 @@ function SignUpForm({onCloseModal}) {
 
     const [errorList, setErrorList] = useState()
 
-
-    const handleSubmit = async (event) => {
+    async function handleSubmit(event) {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-           
+            return
         }
-        else {
-            event.preventDefault()
-            setValidated(true)
-            if(formData.username === '' || formData.email === '' || formData.password === '' || formData.firstName === ''|| formData.lastName === ''){
-                setShowErr(true)
+        
+        event.preventDefault();
+            setValidated(true);
+
+        try {
+            if (formData.username === '' || formData.email === '' || formData.password === '' || formData.firstName === '' || formData.lastName === '') {
+                setShowErr(true);
             }
-            const newUser = await register(formData)
-            if(newUser.ok){
-                console.log('user added')
-                onCloseModal()
-                alert('Ready to sign in')
+            const newUser = await register(formData);
+            if (newUser.ok) {
+                event.preventDefault();
+                console.log('user added');
+              successful()
+
             }
-            if(newUser.length > 0){
-                setErrorList(newUser)
-                setShowErr(false)
+            if (newUser.length > 0) {
+                setErrorList(newUser);
+                setShowErr(false);
             }
         }
-    };
+        catch(err){
+            console.log(err)
+        }
+    }
 
 
 
