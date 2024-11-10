@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import register from '../utils/handleRegister';
+import signIn from '../utils/handleSignIn'
 
 function SignInForm() {
     const [validated, setValidated] = useState(false);
@@ -23,7 +23,6 @@ function SignInForm() {
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-
         }));
     };
 
@@ -35,10 +34,21 @@ function SignInForm() {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-           
+            
         }
         else {
             event.preventDefault()
+            const signInResponse = await signIn(formData);
+            if(signInResponse.ok){
+                console.log(signInResponse)
+                const token = await signInResponse.json()
+                localStorage.setItem('token',token)
+            }
+            else{
+                const error = await signInResponse
+                setErrorList(error)
+
+            } 
         }
     };
 
@@ -51,9 +61,7 @@ function SignInForm() {
                     <Row className="mt-3">
                         <Col xs={12}>
                             <ul className="alert alert-danger" role="alert">
-                                {errorList.map((error) => (
-                                    <p key={error}>{error}</p>
-                                ))}
+                                {errorList}
                             </ul>
                         </Col>
                     </Row>

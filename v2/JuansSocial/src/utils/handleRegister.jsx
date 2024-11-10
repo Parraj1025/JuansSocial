@@ -4,8 +4,8 @@ const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000'
 async function register (formData) {
     console.log(formData)
     try{    
-        const postURL = `${baseURL}/api/user`
-        const newUser = await fetch(`${postURL}`, {
+        const userURL = `${baseURL}/api/user`
+        const newUser = await fetch(`${userURL}`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
