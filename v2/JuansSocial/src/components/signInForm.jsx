@@ -1,10 +1,15 @@
 import { useState } from 'react';
+import { Navigate, useNavigate} from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import signIn from '../utils/handleSignIn'
+import { now } from 'mongoose';
+
+
 
 function SignInForm() {
     const [validated, setValidated] = useState(false);
@@ -28,8 +33,10 @@ function SignInForm() {
 
     const [errorList, setErrorList] = useState()
 
+    const navigate = useNavigate()
 
     const handleSubmit = async (event) => {
+        
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -42,7 +49,9 @@ function SignInForm() {
             if(signInResponse.ok){
                 console.log(signInResponse)
                 const token = await signInResponse.json()
-                localStorage.setItem('token',token)
+                localStorage.setItem('token', token)
+                navigate('Dashboard')
+                
             }
             else{
                 const error = await signInResponse
@@ -97,6 +106,7 @@ function SignInForm() {
                         type='password'
                         placeholder='Password'
                         required
+                        aria-hidden = 'true'
                         name='password'
                         value={formData.password}
                         onChange={handleChange}

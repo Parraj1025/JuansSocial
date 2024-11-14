@@ -7,6 +7,7 @@ const connectDb = async() => {
       
         const database = process.env.MONGOURI;
 
+        
         const connection = await mongoose.connect(database);
 
         if(connection){
