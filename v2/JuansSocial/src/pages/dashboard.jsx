@@ -8,7 +8,7 @@ function Dashboard(){
         <>
         <div>welcome back {userData.firstName}</div>
         <LogOutBtn/>
-        <div> <PostWall/></div>
+        <div> <PostWall username={userData.username}/></div>
        
         </>
        

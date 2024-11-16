@@ -48,7 +48,7 @@ async function authenticate(req, res) {
       const decoded = jwt.verify(token, process.env.SECRETKEY); // Assuming secretKey is a secure secret
       res.status(200).json({
         username: decoded.username,
-        firstName: decoded.firstName
+        firstName: decoded.name
       });
     } catch (error) {
       console.error('Authentication error:', error);

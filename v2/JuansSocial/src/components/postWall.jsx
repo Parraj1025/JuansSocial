@@ -1,10 +1,21 @@
 import { useState } from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
+import newPost from '../utils/handlePosts'
 
-function PostWall() {
+function PostWall({username}) {
   const [formData, setFormData] = useState({
     thoughts: ''
   })
+
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    newPost({
+      post:formData.thoughts,
+      username: username
+    })
+  }
 
 
   const handleChange = async (event) => {
@@ -28,7 +39,7 @@ function PostWall() {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleSubmit}>
           Send
         </Button>
       </Form>

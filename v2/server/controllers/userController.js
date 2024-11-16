@@ -2,6 +2,17 @@ const User = require( "../models/user");
 const jwt = require('jsonwebtoken')
 const key = process.env.SECRETKEY
 
+async function getUser(req,res){
+    try{
+        const userData = await User.find({username: req.params.username})
+        console.log(userData)
+        res.status(200).json('hey')
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 
 async function createUser(req,res){
     try{
@@ -28,7 +39,7 @@ async function checkExisting(req,res){
         if(existingUser[0]){
             const token = jwt.sign({
                 username: existingUser[0].username,
-                firstName: existingUser[0].firstName
+                name: existingUser[0].firstName
             },
             key)
             res.status(200).json(token)
@@ -43,4 +54,4 @@ async function checkExisting(req,res){
     }
 }
 
-module.exports = { createUser, checkExisting}
+module.exports = { createUser, checkExisting, getUser}
