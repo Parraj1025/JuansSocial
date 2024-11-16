@@ -29,6 +29,9 @@ function PostWall({username}) {
 
   return (
     <Container>
+      <div>
+        this is where the posts will be displayed
+      </div>
       <Form>
         <Form.Group className="mb-3">
           <Form.Control

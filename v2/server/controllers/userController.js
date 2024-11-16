@@ -2,11 +2,10 @@ const User = require( "../models/user");
 const jwt = require('jsonwebtoken')
 const key = process.env.SECRETKEY
 
-async function getUser(req,res){
+async function getUserID(req,res){
     try{
-        const userData = await User.find({username: req.params.username})
-        console.log(userData)
-        res.status(200).json('hey')
+        const userId = await User.find({username: req.params.username})
+        res.status(200).json(userId[0].id)
     }
     catch(err){
         console.log(err)
@@ -54,4 +53,4 @@ async function checkExisting(req,res){
     }
 }
 
-module.exports = { createUser, checkExisting, getUser}
+module.exports = { createUser, checkExisting, getUserID}

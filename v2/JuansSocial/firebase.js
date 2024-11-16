@@ -1,5 +1,6 @@
 
 import * as firebase from 'firebase/app';
+
  // Import other necessary modules as needed
 
 const firebaseConfig = {
