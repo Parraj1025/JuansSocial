@@ -28,7 +28,7 @@ function PostWall({username}) {
   }
 
   return (
-    <Container>
+    <Container fluid style={{width:'90vw'}}>
       <div>
         this is where the posts will be displayed
       </div>

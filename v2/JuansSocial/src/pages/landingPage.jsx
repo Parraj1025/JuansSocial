@@ -30,7 +30,7 @@ const [justRegistered, setJustRegistered,] = useState(false)
 
         }
     return (
-        <Container>
+        <Container fluid style={{margin:'0', padding:'0', backgroundColor: 'rgb(35, 44, 51)', color:'rgb(160, 193, 209)', textAlign:'center', width:'100vw', height:'100vh' }}>
             {justRegistered && (
                 <Alert style={{textAlign:'center'}} key='success' variant='success'>
               !!  Now Sign In !!

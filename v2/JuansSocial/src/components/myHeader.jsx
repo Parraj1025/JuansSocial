@@ -5,12 +5,12 @@ import { Container,Row,Col } from 'react-bootstrap'
 function Header() {
  return(
   
-  <Container style={{width:'100%', textAlign:'center'}}>
+  <Container fluid style={{width:'100vw', margin:'0',padding:'3%', textAlign:'center', backgroundColor:'rgb(72, 67, 73)'}}>
     <Col>
-    <Row>
-      <h1>JustAnotherSocial</h1>
+    <Row style={{color:'rgb(218, 223, 247)'}}>
+      <h1 >JustAnotherSocial</h1>
     </Row>
-    <Row>
+    <Row style={{color:'rgb(90, 125, 124)'}}>
       <h5> but better </h5>
     </Row>
     </Col>

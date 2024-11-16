@@ -20,7 +20,7 @@ async function newPost(postBody){
     console.log(postBody)
     try{
         const getuserID = await getUserData(postBody.username)
-        const userID = await getuserID.json()
+        const userData = await getuserID.json()
         const postUrl = `${baseURL}/api/post`
         const newPost = await fetch(`${postUrl}`, {
             method: 'POST',
@@ -29,7 +29,8 @@ async function newPost(postBody){
             },
             body: JSON.stringify({
                 post: postBody.post,
-                userId: userID
+                userId: userData.userID,
+                username: userData.username
             })
         })
 

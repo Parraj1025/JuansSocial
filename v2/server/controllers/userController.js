@@ -5,7 +5,11 @@ const key = process.env.SECRETKEY
 async function getUserID(req,res){
     try{
         const userId = await User.find({username: req.params.username})
-        res.status(200).json(userId[0].id)
+        res.status(200).json({
+            userID: userId[0].id,
+            username: userId[0].username
+
+        })
     }
     catch(err){
         console.log(err)

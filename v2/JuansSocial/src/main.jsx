@@ -10,11 +10,13 @@ import ProtectedRoute from './utils/protectedRoute';
 
 import { StrictMode } from 'react';
 import { BrowserRouter, Router, Route, Routes } from 'react-router-dom'
+import { Container } from 'react-bootstrap';
 
 
 createRoot(document.getElementById('root')).render(
       <StrictMode>
-            <Header />
+            <Container fluid style={{height:"100vh", width:'100vw', marginInline:'0%'}}>
+            <Header/>
             <BrowserRouter>
                   <Routes>
                         <Route path='/' element={<LandingPage/>}/>
@@ -25,6 +27,7 @@ createRoot(document.getElementById('root')).render(
                         }/>
                   </Routes>
             </BrowserRouter>
+            </Container>
       </StrictMode>
 
 )
