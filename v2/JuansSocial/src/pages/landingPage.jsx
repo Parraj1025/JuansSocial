@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { Container, Col, Row, Alert } from 'react-bootstrap';
 import SignUpModal from '../components/SignUpModal';
 import SignInModal from '../components/SignInModal';
+import SignUpForm from '../components/signUpForm';
+import { PrefilledDataProvider, PrefilledDataContext } from '../utils/googleContext';
 
 function LandingPage() {   
 
@@ -14,6 +16,19 @@ const [justRegistered, setJustRegistered,] = useState(false)
             <>Ready To Sign In</>
         )
     }
+
+    const [showSignUpform, setShowSignUpForm] = useState(false)
+    const [prefilledEmail, setPrefilledEmail] = useState();
+    const [showButtons, setShowButtons] = useState(true)
+
+            const handleOpen = (email) => {
+                setPrefilledEmail(email)
+                setShowSignUpForm(true)
+                setShowButtons(false)
+                
+            console.log("Opening Sign Up Modal");
+
+        }
     return (
         <Container>
             {justRegistered && (
@@ -21,16 +36,22 @@ const [justRegistered, setJustRegistered,] = useState(false)
               !!  Now Sign In !!
               </Alert>
             )}
-            <Row>
-                <SignUpModal nowSignIn={registerSuccess}/>
+            {showSignUpform && (
+                <PrefilledDataProvider initalEmail={prefilledEmail}>
+                <SignUpForm/>
+                </PrefilledDataProvider>
+            )}
+            {showButtons && (
+                <Container>
+                <Row>
+                <SignUpModal/>
             </Row>
             <Row>
-                <SignInModal />
+                <SignInModal openSignUp={handleOpen} />
             </Row>
-
+            </Container>
+            )}
         </Container>
-
-
     );
 }
 

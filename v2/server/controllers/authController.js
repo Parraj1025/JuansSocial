@@ -11,10 +11,7 @@ async function signIn(req, res) {
         if (existingUser[0]) {
             const key = process.env.SECRETKEY
             const encryptedPass = await existingUser[0].password
-            const data = {
-              username: existingUser[0].username,
-              name: existingUser[0].firstName
-            }
+
             const matchingPassword = await bcrypt.compare(req.body.password, encryptedPass)
             if (matchingPassword) {
                 const token = jwt.sign({
@@ -51,7 +48,7 @@ async function authenticate(req, res) {
       const decoded = jwt.verify(token, process.env.SECRETKEY); // Assuming secretKey is a secure secret
       res.status(200).json({
         username: decoded.username,
-        firstName: decoded.name
+        firstName: decoded.firstName
       });
     } catch (error) {
       console.error('Authentication error:', error);

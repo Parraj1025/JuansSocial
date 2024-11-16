@@ -1,8 +1,9 @@
 import react, { useState } from "react"
 import { Container, Button, Modal, Row } from "react-bootstrap"
 import SignUpForm from "./signUpForm";
+import { PrefilledDataContext} from "../utils/googleContext";
 
-function SignUpModal({nowSignIn}) {
+function SignUpModal({nowSignIn, prefilledEmail}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -29,7 +30,9 @@ function SignUpModal({nowSignIn}) {
         
     </Modal.Header>
     <Modal.Body className="text-center">
-      <SignUpForm onCloseModal={handleClose} successful={handleSuccess}/>
+     
+      <SignUpForm onCloseModal={handleClose} prefilledEmail={prefilledEmail}/>
+      
     </Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={handleClose}>
@@ -38,6 +41,7 @@ function SignUpModal({nowSignIn}) {
     </Modal.Footer>
   </Modal>
 </Container>
+
     )
 }
 

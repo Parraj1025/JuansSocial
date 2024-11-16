@@ -1,20 +1,32 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import register from '../utils/handleRegister';
+import { PrefilledDataContext, PrefilledDataProvider } from '../utils/googleContext';
+import signIn from '../utils/handleSignIn';
+import { useNavigate } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
-function SignUpForm({onCloseModal, successful}) {
+function SignUpForm() {
+
+    const navigate = useNavigate()
+    
+    const { preFilledEmail, handleSetPreFilledEmail } = useContext(PrefilledDataContext)
+    const [finishRegister, setFinishRegister] = useState(false)
+
     const [validated, setValidated] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         username: '',
         password: '',
-        email: ''
+        email: PrefilledDataContext._currentValue.email || ''
     })
+
+
 
     const [showErr, setShowErr] = useState({
         showErr: false
@@ -26,7 +38,6 @@ function SignUpForm({onCloseModal, successful}) {
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
-
         }));
     };
 
@@ -35,13 +46,12 @@ function SignUpForm({onCloseModal, successful}) {
     async function handleSubmit(event) {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
             return
         }
-        
+
         event.preventDefault();
-            setValidated(true);
+        setValidated(true);
 
         try {
             if (formData.username === '' || formData.email === '' || formData.password === '' || formData.firstName === '' || formData.lastName === '') {
@@ -51,15 +61,25 @@ function SignUpForm({onCloseModal, successful}) {
             if (newUser.ok) {
                 event.preventDefault();
                 console.log('user added');
-              successful()
+                const signInResponse = await signIn({
+                    username: formData.username,
+                    password: formData.password,
+                    firstName: formData.firstName
+                })
+                if (signInResponse.ok) {
+                    const token = await signInResponse.json()
+                    localStorage.setItem('token', token)
+                    navigate('Dashboard')
+                }
 
             }
             if (newUser.length > 0) {
+                event.preventDefault()
                 setErrorList(newUser);
                 setShowErr(false);
             }
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }
@@ -68,24 +88,30 @@ function SignUpForm({onCloseModal, successful}) {
 
 
     return (
+<Container>
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                {errorList && (
-                    <Row className="mt-3">
-                        <Col xs={12}>
-                            <ul className="alert alert-danger" role="alert">
-                                {errorList.map((error) => (
-                                    <p key={error}>{error}</p>
-                                ))}
-                            </ul>
-                        </Col>
-                    </Row>
-    
-                )}
-                {showErr === true && (
-                    <Row className="alert alert-danger" role="alert">
-                        <p>!! ALL fields must be completed !! </p>
-                    </Row>
-                )}
+            {errorList && (
+                <Row className="mt-3">
+                    <Col xs={12}>
+                        <ul className="alert alert-danger" role="alert">
+                            {errorList.map((error) => (
+                                <p key={error}>{error}</p>
+                            ))}
+                        </ul>
+                    </Col>
+                </Row>
+            )}
+            <Row style={{ justifyContent: 'center' }}>
+                <div style={{textAlign:'center'}}>
+                    {PrefilledDataContext._currentValue.email && (
+                        <p className='alert alert-danger'>Finish Registration</p>)}
+                </div>
+            </Row>
+            {showErr === true && (
+                <Row className="alert alert-danger" role="alert">
+                    <p>!! ALL fields must be completed !! </p>
+                </Row>
+            )}
             <Row className='mx-auto justify-content-center'>
                 <Form.Group as={Col} md="7" controlId="validationEmail">
                     <Form.Label>Email</Form.Label>
@@ -169,6 +195,7 @@ function SignUpForm({onCloseModal, successful}) {
             </Row>
             <Button style={{ marginTop: '5%' }} type="submit" onClick={handleSubmit}>SignUp</Button>
         </Form>
+        </Container>
     );
 }
 

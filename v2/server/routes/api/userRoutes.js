@@ -1,8 +1,9 @@
 const express = require('express');
-const createUser = require('../../controllers/userController.js');
+const {createUser, checkExisting} = require('../../controllers/userController.js');
 
 const router = express.Router()
 
 router.post('/', createUser)
+router.post('/verify', checkExisting)
 
 module.exports = router

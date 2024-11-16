@@ -1,12 +1,17 @@
 import react, { useState } from "react"
 import { Container, Button, Modal, Row } from "react-bootstrap"
-import SignInForm from "./signInForm";;
+import SignInForm from "./signInForm";
 
-function SignInModal() {
+function SignInModal({openSignUp}) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);   
+
+    const handleSwitch = (email) => {
+      handleClose()
+      openSignUp(email)
+    }
         
     return(
         <Container style={{textAlign:'center'}}>
@@ -20,7 +25,7 @@ function SignInModal() {
       </Modal.Title>
     </Modal.Header>
     <Modal.Body className="text-center">
-      <SignInForm />
+      <SignInForm finishRegister={handleSwitch} />
     </Modal.Body>
     <Modal.Footer>
       <Button variant="secondary" onClick={handleClose}>
