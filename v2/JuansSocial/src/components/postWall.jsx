@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
+import { Form, Button, Container, Row } from 'react-bootstrap'
 import newPost from '../utils/handlePosts'
+import { reload } from 'firebase/auth'
 
-function PostWall({username}) {
+function PostWall({username, fetchpost}) {
   const [formData, setFormData] = useState({
     thoughts: ''
   })
@@ -11,10 +12,14 @@ function PostWall({username}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    newPost({
+    const posting = await newPost({
       post:formData.thoughts,
       username: username
     })
+    if(posting){
+      fetchpost()
+      setFormData({thoughts: ''})
+    }
   }
 
 
@@ -28,12 +33,10 @@ function PostWall({username}) {
   }
 
   return (
-    <Container fluid style={{width:'90vw'}}>
-      <div>
-        this is where the posts will be displayed
-      </div>
+    <Container style={{ margin: '3%',padding:'5%', width:'100vw'}}>
       <Form>
-        <Form.Group className="mb-3">
+        <Row>
+        <Form.Group style={{width:'65%'}}>
           <Form.Control
             type="text"
             placeholder='enter your thoughts'
@@ -42,9 +45,10 @@ function PostWall({username}) {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        <Button style={{width:'20%'}} variant="primary" type="submit" onClick={handleSubmit}>
           Send
         </Button>
+        </Row>
       </Form>
     </Container>
   )

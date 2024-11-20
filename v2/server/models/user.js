@@ -23,9 +23,11 @@ const userSchema = new mongoose.Schema(
             required: true,
             type: String
         },
-        posts:[{type: Schema.Types.ObjectId, ref: 'posts'}]
-    }
-)
+        posts: {
+            type:[{ type: Schema.Types.ObjectId, ref: 'post'}],
+            default:[]
+        }
+    })
 
 userSchema.pre('save', async function (userData) {
     if(this.isModified('password')) {

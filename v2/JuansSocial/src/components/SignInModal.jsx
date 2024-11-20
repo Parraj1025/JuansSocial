@@ -14,8 +14,8 @@ function SignInModal({openSignUp}) {
     }
         
     return(
-        <Container style={{textAlign:'center'}}>
-  <Button onClick={handleShow} style={{ marginTop: '2%', backgroundColor: "red", borderColor: "red"}}>
+        <Container style={{textAlign:'center', marginTop:'20%'}}>
+  <Button onClick={handleShow} style={{width:'100%', height:'120%' , marginTop: '5%', backgroundColor: "red", borderColor: "red"}}>
     Sign In
   </Button>
   <Modal show={show} centered>

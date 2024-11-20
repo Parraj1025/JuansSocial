@@ -35,10 +35,11 @@ async function newPost(postBody){
         })
 
         if(newPost){
-            console.log(newPost)
+            return true
         }
     }
     catch(err){
+        return err
         console.log(err)
     }
 }

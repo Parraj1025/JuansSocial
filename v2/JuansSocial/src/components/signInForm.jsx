@@ -9,6 +9,7 @@ import signIn from '../utils/handleSignIn'
 import checkGoogle from '../utils/handleGoogle';
 import SignUpModal from './SignUpModal';
 import handleGoogleSignIn from '../utils/handleGoogle';
+import { Container } from 'react-bootstrap';
 
 
 
@@ -128,7 +129,7 @@ const handleSubmit = async (event) => {
 
 
 return (
-    
+    <Container>
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {errorList && (
             <Row className="mt-3">
@@ -187,6 +188,7 @@ return (
         >SignIn</Button>
         
     </Form>
+    </Container>
 );
 }
 

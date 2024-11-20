@@ -9,7 +9,7 @@ import formatDate from "../utils/formatDate"
 const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "http://localhost:3000";
 
 
-function Dashboard() {
+function ProfilePage() {
     const userData = useUserData()
     const [userPost, setUserPost] = useState([]);
     const postURL = `${baseURL}/api/post`
@@ -46,7 +46,7 @@ function Dashboard() {
             </div>
             </Row>
             <div style={{textAlign:'center'}}>
-                User Posts
+                Your Posts
                 {userPost && (
                     <div style={{ overflowY: "auto", maxHeight: "400px" }}>
                         {userPost.map(post => (
@@ -70,4 +70,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default ProfilePage

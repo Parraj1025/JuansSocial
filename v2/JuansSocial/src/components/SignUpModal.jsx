@@ -17,7 +17,7 @@ function SignUpModal({nowSignIn, prefilledEmail}) {
     }
     return(
         <Container style={{textAlign:'center'}}>
-  <Button onClick={handleShow} style={{ marginTop: '2%', backgroundColor: "red", borderColor: "red"}}>
+  <Button onClick={handleShow} style={{width:'100%', height:'120%' , marginTop: '2%', backgroundColor: "red", borderColor: "red"}}>
     Sign Up
   </Button>
 
