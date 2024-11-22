@@ -16,7 +16,8 @@ async function signIn(req, res) {
             if (matchingPassword) {
                 const token = jwt.sign({
                     username: existingUser[0].username,
-                    name: existingUser[0].firstName
+                    name: existingUser[0].firstName,
+                    userId: existingUser[0].userId
                 },
                     key,
                     { expiresIn: 60000 }
@@ -48,7 +49,9 @@ async function authenticate(req, res) {
       const decoded = jwt.verify(token, process.env.SECRETKEY); // Assuming secretKey is a secure secret
       res.status(200).json({
         username: decoded.username,
-        firstName: decoded.name
+        firstName: decoded.name,
+        userId: decoded.userId
+
       });
     } catch (error) {
       console.error('Authentication error:', error);

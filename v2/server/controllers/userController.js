@@ -42,7 +42,8 @@ async function checkExisting(req,res){
         if(existingUser[0]){
             const token = jwt.sign({
                 username: existingUser[0].username,
-                name: existingUser[0].firstName
+                name: existingUser[0].firstName,
+                userId: existingUser[0].id
             },
             key)
             res.status(200).json(token)

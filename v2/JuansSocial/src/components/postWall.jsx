@@ -33,10 +33,10 @@ function PostWall({username, fetchpost}) {
   }
 
   return (
-    <Container style={{ margin: '3%',padding:'5%', width:'100vw'}}>
+    <Container style={{textAlign:'center', marginTop: '5%',padding:'2%', width:'90vw'}}>
       <Form>
         <Row>
-        <Form.Group style={{width:'65%'}}>
+        <Form.Group style={{width:'70%'}}>
           <Form.Control
             type="text"
             placeholder='enter your thoughts'
@@ -45,7 +45,7 @@ function PostWall({username, fetchpost}) {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button style={{width:'20%'}} variant="primary" type="submit" onClick={handleSubmit}>
+        <Button style={{width:'30%'}} variant="primary" type="submit" onClick={handleSubmit}>
           Send
         </Button>
         </Row>

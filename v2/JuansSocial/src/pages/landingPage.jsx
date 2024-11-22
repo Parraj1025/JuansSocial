@@ -30,18 +30,22 @@ const [justRegistered, setJustRegistered,] = useState(false)
 
         }
     return (
+
+        
+
         <Container fluid style={{margin:'0', padding:'0', backgroundColor: 'rgb(35, 44, 51)', color:'rgb(160, 193, 209)', textAlign:'center', width:'100vw', height:'100vh' }}>
+            <h1 style={{paddingTop:'5%'}}>WELCOME BACK </h1>
             {showSignUpform && (
                 <PrefilledDataProvider initalEmail={prefilledEmail}>
                 <SignUpForm/>
                 </PrefilledDataProvider>
             )}
             {showButtons && (
-                <Container style={{padding:'20%'}}>
-                <Row style={{margin:'15%'}}>
+                <Container style={{}}>
+                <Row style={{}}>
                 <SignUpModal/>
             </Row>
-            <Row style={{margin:'15%'}}>
+            <Row style={{}}>
                 <SignInModal openSignUp={handleOpen} />
             </Row>
             </Container>

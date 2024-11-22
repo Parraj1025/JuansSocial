@@ -16,7 +16,7 @@ import { Container } from 'react-bootstrap';
 
 
 createRoot(document.getElementById('root')).render(
-      <StrictMode fluid style={{height:"100vh", width:'100%'}}>
+      <StrictMode style={{height:"100vh", width:'100%'}}>
             <Header fluid />
             <BrowserRouter>
                   <Routes>

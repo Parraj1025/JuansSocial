@@ -21,8 +21,8 @@ const postSchema = new mongoose.Schema(
         },
         meta:{
             upvotes:{
-                type:Number,
-                default:0
+                type: [Schema.Types.ObjectId],
+                default:[]
         }
         }
     }
