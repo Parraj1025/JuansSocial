@@ -4,8 +4,10 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const {signIn, authenticate} = require('../../controllers/authController')
 
+
+
 router.use(cookieParser())
-router.use(cors())
+
 
 router.post('/', signIn)
 router.post('/check', authenticate)

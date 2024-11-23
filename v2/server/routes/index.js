@@ -14,12 +14,7 @@ router.use(bodyParser.json())
 router.use(express.json());
 router.use(express.urlencoded({extended: true}))
 
-const corsOptions = {
-    origin: ['http://localhost:5173/', 'http://localhost:3000/' ],
-    credentials: true
-}
-
-router.use(cors(corsOptions))
+router.use(cors())
 
 
 

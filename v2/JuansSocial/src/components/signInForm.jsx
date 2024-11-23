@@ -25,7 +25,7 @@ function SignInForm({finishRegister}) {
       
             const google = await handleGoogleSignIn();
       
-            let googleEmail = await google
+            let googleEmail = google
       
             const payload = {
                 email: googleEmail
