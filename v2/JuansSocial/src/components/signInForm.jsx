@@ -179,7 +179,7 @@ return (
         <Row>
         </Row>
 
-            <img style={{marginTop:'5%', marginInline:'3%'}} onClick={goGoogle} src='/src/assets/google.png'></img>
+            <img style={{marginTop:'5%', marginInline:'3%'}} onClick={goGoogle} src='/assets/google.png'></img>
 
         {error && <p>{error}</p>}
         <Button style={{ marginTop: '5%' }} type="submit" onClick={

@@ -117,7 +117,7 @@ function SignUpForm() {
                     <Form.Label>Email</Form.Label>
                     <InputGroup hasValidation>
                         <InputGroup.Text id="inputGroupPrepend">
-                            <img src="/src/assets/email.png" style={{ width: '20px' }} />
+                            <img src="/assets/email.png" style={{ width: '20px' }} />
                         </InputGroup.Text>
                         <Form.Control
                             required
