@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, createContext, useContext } from "react";
 
-const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "http://localhost:3000" 
+const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "https://juanssocial.onrender.com" 
 
 const UserDataContext = createContext()
 
