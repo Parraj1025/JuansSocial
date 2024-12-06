@@ -54,6 +54,7 @@ function LandingPage() {
                                 <SignInModal openSignUp={handleOpen} />
 
                             </Row>
+                            <button> forgot password</button>
                         </Container>
                     )}
                 </Col>
