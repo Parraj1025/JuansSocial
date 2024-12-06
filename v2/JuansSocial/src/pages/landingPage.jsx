@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Col, Row, Alert } from 'react-bootstrap';
+import { Container, Col, Row, Alert, Button } from 'react-bootstrap';
 import SignUpModal from '../components/SignUpModal';
 import SignInModal from '../components/SignInModal';
 import SignUpForm from '../components/signUpForm';
@@ -54,7 +54,7 @@ function LandingPage() {
                                 <SignInModal openSignUp={handleOpen} />
 
                             </Row>
-                            <button> forgot password</button>
+                            <Button variant='warning'> forgot password</Button>
                         </Container>
                     )}
                 </Col>
