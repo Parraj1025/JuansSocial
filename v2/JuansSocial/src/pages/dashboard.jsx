@@ -53,33 +53,29 @@ function Dashboard() {
 
 
     return (
-        <Container fluid style={{ backgroundColor: 'rgb(35, 44, 51)', color: 'rgb(160, 193, 209)', width: '100vw', height: '100vh' }}>
-            <Row style={{ marginInline: '2%' }}>
-                <div style={{ width: '30%', textAlign: 'start', padding: '2%' }}>
-                    <h6>Signed in as: {userData.firstName}</h6>
-                </div>
-            </Row>
+        <Container fluid style={{ backgroundColor: 'black', color: 'rgb(160, 193, 209)', width: '100vw', height: '100vh', paddingTop:'5%' }}>
             <div style={{ textAlign: 'center' }}>
                 User Posts
                 {userPost && (
                     <div style={{ overflowY: "auto", maxHeight: "400px",  marginTop:'2%'  }}>
                         {userPost.map(post => (
                             <div id={post._id} key={post._id}>
-                                <Container style={{ backgroundColor: 'rgb(160, 193, 209)', border: '5px, solid, rgb(218, 223, 247)', width: "75vw" }}>
+                                <Container style={{ backgroundColor: 'black', border: '5px, solid, rgb(218, 223, 247)', width: "75vw", marginBlock:'1%' }}>
                                     <Row style={{justifyContent:'end', marginTop:'1%'}}>
                                      {post.username === userData.username && (<FontAwesomeIcon style={{width:'3%'}} color="grey" icon={faTrash} onClick={() => {
                                             handleDelete(post._id)
                                         }}></FontAwesomeIcon>)}
                                         </Row>
-                                    <Row style={{ color: 'rgb(35, 44, 51)' }}>
+                                    <Row style={{color:'rgb(255, 179, 15)'}}>
                                         @{post.username}
                                     </Row>
-                                    <Row style={{ color: 'black' }}>{formatDate(post.createdAt)}</Row>
-                                    <Row style={{ justifyContent: 'center', color: 'black' }}>
-                                        {post.post}
+                                    <Row style={{ color: 'white' }}>{formatDate(post.createdAt)}</Row>
+                                    <Row style={{ justifyContent: 'center', color: 'light-grey' }}>
+                                    <div style={{textAlign:'start', marginInlineStart:'30%', marginInlineEnd:'10%', width:'60%',}}>{post.post}</div>
+                                        
                                     </Row>
                                     <Row style={{textAlign:'end'}}>
-                                        <Col style={{display:"inline-block", color:"black", marginBottom:'1%'}}>
+                                        <Col style={{display:"inline-block", color:"rgb(25, 130, 196)", marginBottom:'1%'}}>
                                         {post.meta.upvotes.length > 0 && (post.meta.upvotes.length)}
                                         <FontAwesomeIcon style={{ width:'4%', marginLeft:'5px'}} color="red" icon={faThumbsUp} onClick={() =>
                                             handleLikes({
